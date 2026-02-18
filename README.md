@@ -6,5 +6,5 @@
 #### id: A106914
 #### Nome: Gonçalo Duarte Coutinho Martins
 <figure>
-<img src="images/foto.png" style="width:30%" />
+<img src="TPC1/images/foto.png" style="width:30%" />
 </figure>
