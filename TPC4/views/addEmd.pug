@@ -1,0 +1,75 @@
+extends layout
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h1 Novo Exame Médico Desportivo
+    form(action="/emd" method="post")
+      .w3-container
+        .w3-row
+          .w3-half.w3-padding-small
+            label Primeiro Nome
+            input.w3-input(type="text" name="prim_nome" required)
+          .w3-half.w3-padding-small
+            label Último Nome
+            input.w3-input(type="text" name="ult_nome" required)
+
+        .w3-row.w3-margin-top
+          .w3-half
+            p Género
+            label.w3-margin-right
+              input(type="radio" name="genero" value="F" required)
+              |  F
+            label
+              input(type="radio" name="genero" value="M" required)
+              |  M
+          .w3-half
+            label Data EMD
+            .w3-row
+              .w3-third
+                select.w3-select.w3-margin-right(name="dia")
+                  option(value="" disabled selected) Dia
+                  each dia in Array.from({length: 31}, (_, i) => i + 1)
+                    option(value=dia)= dia
+              .w3-third
+                select.w3-select.w3-margin-right(name="mes")
+                  option(value="" disabled selected) Mês
+                  each mes, i in ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+                    option(value=i+1)= mes
+              .w3-third
+                select.w3-select(name="ano")
+                  option(value="" disabled selected) Ano
+                  each ano in Array.from({length: 10}, (_, i) => 2024 - i)
+                    option(value=ano)= ano
+
+        .w3-row.w3-margin-top
+          .w3-third.w3-padding-small
+            label Morada
+            input.w3-input(type="text" name="morada" required)
+          .w3-third.w3-padding-small
+            label Clube
+            input.w3-input(type="text" name="clube" required)
+          .w3-third.w3-padding-small
+            label Modalidade
+            input.w3-input(type="text" name="modalidade" required)
+
+        .w3-row.w3-margin-top
+          .w3-half.w3-padding-small
+            label Email
+            input.w3-input(type="text" name="email" required)
+          .w3-half.w3-padding-small
+            label Idade
+            input.w3-input(type="number" name="idade" required)
+
+        .w3-row.w3-margin-top
+          .w3-half
+            label
+              input(type="checkbox" name="federado" value="true")
+              |  Federado
+          .w3-half
+            label
+              input(type="checkbox" name="resultado" value="true")
+              |  Resultado
+
+        .w3-row.w3-margin-top
+            button.w3-btn.w3-round.w3-teal.w3-margin-right(type="submit" href="/") Submeter
+            include voltar

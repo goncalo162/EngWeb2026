@@ -1,0 +1,74 @@
+extends layout
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h1 Estatísticas dos Exames Médicos Desportivos
+
+    .w3-container.w3-margin-top
+
+      h3 Distribuição por Sexo
+      - var masc = list.filter(e => e.género === 'M').length
+      - var fem = list.filter(e => e.género === 'F').length
+      table.w3-table-all.w3-margin-bottom
+        tr
+          th Género
+          th Total
+        tr
+          td Masculino
+          td= masc
+        tr
+          td Feminino
+          td= fem
+
+      h3 Distribuição por Resultado
+      - var aprovado = list.filter(e => e.resultado === true).length
+      - var reprovado = list.filter(e => e.resultado === false).length
+      table.w3-table-all.w3-margin-bottom
+        tr
+          th Resultado
+          th Total
+        tr
+          td Aprovado
+          td= aprovado
+        tr
+          td Reprovado
+          td= reprovado
+
+      h3 Distribuição por Federado
+      - var federado = list.filter(e => e.federado === true).length
+      - var naoFederado = list.filter(e => e.federado === false).length
+      table.w3-table-all.w3-margin-bottom
+        tr
+          th Federado
+          th Total
+        tr
+          td Federado
+          td= federado
+        tr
+          td Não Federado
+          td= naoFederado
+
+      h3 Distribuição por Modalidade
+      - var modalidades = list.reduce((acc, e) => { acc[e.modalidade] = (acc[e.modalidade] || 0) + 1; return acc }, {})
+      table.w3-table-all.w3-margin-bottom
+        tr
+          th Modalidade
+          th Total
+        each count, modalidade in modalidades
+          tr
+            td= modalidade
+            td= count
+
+      h3 Distribuição por Clube
+      - var clubes = list.reduce((acc, e) => { acc[e.clube] = (acc[e.clube] || 0) + 1; return acc }, {})
+      table.w3-table-all.w3-margin-bottom
+        tr
+          th Clube
+          th Total
+        each count, clube in clubes
+          tr
+            td= clube
+            td= count
+
+    .w3-container.w3-margin-top.w3-margin-bottom
+      include voltar

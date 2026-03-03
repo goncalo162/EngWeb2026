@@ -1,0 +1,33 @@
+extends layout
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h1 Lista de Exames Médicos Desportivos
+    .w3-container
+      table.w3-table-all.w3-margin-top
+        tr
+          th Index
+          th Nome
+          th Data
+          th Modalidade
+          th Idade
+          th Género
+          th Morada
+          th Clube
+          th Email
+          th Federado
+          th Resultado
+        tr
+          td= athlete.index
+          td= athlete.nome.primeiro + " " + athlete.nome.último
+          td= athlete.dataEMD
+          td= athlete.modalidade
+          td= athlete.idade
+          td= athlete.género
+          td= athlete.morada
+          td= athlete.clube
+          td= athlete.email
+          td= athlete.federado
+          td= athlete.resultado
+      .w3-margin-top.w3-margin-bottom
+        include voltar
